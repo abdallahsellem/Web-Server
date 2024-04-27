@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        ".fantomasignore": "ignore",
+        "malloc.h": "c",
+        "stdlib.h": "c",
+        "io_helper.h": "c",
+        "pthread.h": "c",
+        "getopt_core.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
