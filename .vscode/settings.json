@@ -5,7 +5,14 @@
         "stdlib.h": "c",
         "io_helper.h": "c",
         "pthread.h": "c",
-        "getopt_core.h": "c"
+        "getopt_core.h": "c",
+        "type_traits": "c",
+        "thread_pool.h": "c",
+        "in.h": "c",
+        "definations.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c",
+        "producer.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -146,9 +146,7 @@ void request_serve_static(int fd, char *filename, int filesize) {
 
 // handle a request
 void request_handle(int fd) {
-    printf("ABDDDDDDDDDDDDDDDDDDDDDDDDDDDD \n");
 
-    printf("descriptor :%d \n",fd);
     int is_static;
     struct stat sbuf;
     char buf[MAXBUF], method[MAXBUF], uri[MAXBUF], version[MAXBUF];
@@ -174,7 +172,6 @@ void request_handle(int fd) {
 	    request_error(fd, filename, "403", "Forbidden", "server could not read this file");
 	    return;
 	}
-        printf("Salaaaaaaaaaaam \n");
 	request_serve_static(fd, filename, sbuf.st_size);
     } else {
 	if (!(S_ISREG(sbuf.st_mode)) || !(S_IXUSR & sbuf.st_mode)) {
