@@ -12,7 +12,12 @@
         "definations.h": "c",
         "unistd.h": "c",
         "stdio.h": "c",
-        "producer.h": "c"
+        "producer.h": "c",
+        "array": "c",
+        "string_view": "c",
+        "ostream": "c",
+        "request.h": "c",
+        "typeinfo": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

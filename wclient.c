@@ -64,6 +64,8 @@ void client_print(int fd) {
 	printf("%s", buf);
 	n = readline_or_die(fd, buf, MAXBUF);
     }
+
+    printf("\n \n \n ");
 }
 
 int main(int argc, char *argv[]) {

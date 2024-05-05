@@ -12,6 +12,3 @@ REQUEST_PATH="/spin.cgi"
 for ((i=0; i<$NUM_REQUESTS; i++)); do
     ./wclient $SERVER_HOST $SERVER_PORT $REQUEST_PATH &
 done
-
-# Wait for all requests to finish
-wait

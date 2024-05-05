@@ -16,10 +16,11 @@ int main(int argc, char *argv[]) {
     int c;
     char *root_dir = default_root;
     int port = 10000;
-	int num_threads=3 ;
-    pthread_t threads[NUM_THREADS];
+	int num_threads=10;
+    char algorithm_type[100];
+    pthread_t threads[num_threads];
 
-    while ((c = getopt(argc, argv, "d:p:t:")) != -1) {
+    while ((c = getopt(argc, argv, "d:p:t:s:")) != -1) {
         switch (c) {
             case 'd':
                 root_dir = optarg;
@@ -30,13 +31,16 @@ int main(int argc, char *argv[]) {
 			case 't':
                 num_threads = atoi(optarg);
                 break;
+            case 's':
+                strcpy(algorithm_type, optarg);
+                break;
             default:
                 fprintf(stderr, "usage: wserver [-d basedir] [-p port]\n");
                 exit(1);
         }
     }
     // Start the thread pool
-    struct thread_arg *thread_arg_obj=init_thread_pool(threads,num_threads);
+    struct thread_arg *thread_arg_obj=init_server(threads,num_threads,algorithm_type);
     // Change to the specified directory
     chdir_or_die(root_dir);
 

@@ -11,6 +11,18 @@
 #define NUM_THREADS 2
 
 
+// Queue  structure
+
+struct queue
+{
+    int arr[NUM_REQUESTS_BUFFER];
+    int rear;
+    int front;
+    int size;
+};
+
+// Thread Pool structure
+
 struct thread_pool_type
 {
 pthread_mutex_t BufferLock ;
@@ -21,7 +33,8 @@ pthread_cond_t EMPTY ;
 // Scheduler structure
 struct scheduler_type {
 
-    int BUFFER[NUM_REQUESTS_BUFFER];
+    int BUFFER_STACK[NUM_REQUESTS_BUFFER];
+    struct queue *BUFFER_QUEUE ;
     int curr_size;
 
 };
@@ -31,6 +44,7 @@ struct scheduler_type {
 
     struct scheduler_type * scheduler;
     struct thread_pool_type * pool;
+    char *algorithm_type;
     int requests_counter ;
 
 };
