@@ -116,8 +116,8 @@ For example, you could run your program as:
 
 to Send Multiple Requests to running server to test the scheduling  use this command :
 
-`./wclient_req_test.sh` 
+`./tests/wclient_req_test.sh` 
 
 It sends 100 request to the Server and we are logging the number of Requests in the Buffer so you will be able to see the scheduling running in your terminal 
 
-**Note**: don't forget to run `chmod x wclient_req_test.sh ` so you will be able to run this script file 
+**Note**: don't forget to run `chmod x ./tests/wclient_req_test.sh ` so you will be able to run this script file 
