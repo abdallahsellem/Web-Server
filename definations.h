@@ -11,7 +11,6 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <semaphore.h>
-
 #define NUM_REQUESTS_BUFFER 100
 #define NUM_THREADS 2
 
@@ -31,7 +30,7 @@ struct scheduler_type {
 
     int BUFFER_STACK[NUM_REQUESTS_BUFFER];
     struct queue *BUFFER_QUEUE ;
-    struct heap *BUFFER_HEAP ;
+    struct minHeap *BUFFER_HEAP ;
     int curr_size;
 
 };
@@ -51,6 +50,7 @@ struct scheduler_type {
 // Generic Functions :
 
 int request_parse_uri(char *uri, char *filename, char *cgiargs);
+int get_filesize(int con_fd);
 
 
 

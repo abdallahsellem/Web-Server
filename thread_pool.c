@@ -6,6 +6,7 @@
 #include "definations.h"
 #include "request.h"
 #include "queue.h"
+#include "heap.h"
 struct scheduler_type *init_scheduler(char *algorithm_type)
 {
     struct scheduler_type *scheduler_obj = (struct scheduler_type *)malloc(sizeof(struct scheduler_type));
@@ -16,6 +17,9 @@ struct scheduler_type *init_scheduler(char *algorithm_type)
     }
     else if (strcmp(algorithm_type, "SFF") == 0)
     {
+        struct minHeap *heap = (struct minHeap *)malloc(sizeof(struct minHeap));
+        init_minHeap(heap, NUM_REQUESTS_BUFFER);
+        scheduler_obj->BUFFER_HEAP = heap;
     }
     return scheduler_obj;
 }
@@ -38,7 +42,7 @@ struct thread_arg *init_server(pthread_t *threads, int threads_number, char *alg
 {
     struct thread_pool_type *thread_pool_obj = init_thread_pool();
     struct scheduler_type *scheduler_obj = init_scheduler(algorithm_type);
-    struct thread_arg *thread_arg_obj = init_server_arg(thread_pool_obj, scheduler_obj,algorithm_type);
+    struct thread_arg *thread_arg_obj = init_server_arg(thread_pool_obj, scheduler_obj, algorithm_type);
     pthread_mutex_init(&thread_arg_obj->pool->BufferLock, NULL);
     pthread_cond_init(&thread_arg_obj->pool->EMPTY, NULL);
     // Create worker threads
@@ -66,10 +70,13 @@ void consume_requests(void *threadarg)
         }
 
         int request = 0;
-        if (strcmp(thread_arg_obj->algorithm_type, "FIFS")==0)
+        if (strcmp(thread_arg_obj->algorithm_type, "FIFS") == 0)
         {
-            request=dequeue(thread_arg_obj->scheduler->BUFFER_QUEUE);
-
+            request = dequeue(thread_arg_obj->scheduler->BUFFER_QUEUE);
+        }
+        else if(strcmp(thread_arg_obj->algorithm_type, "SFF")==0)
+        {
+            request = get_min(thread_arg_obj->scheduler->BUFFER_HEAP).second ;
         }
         else
         {

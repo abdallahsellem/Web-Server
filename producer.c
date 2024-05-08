@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "queue.h"
-
+#include "heap.h"
 void accept_request(int conn_fd ,struct thread_arg *thread_arg_obj)
 {
 
@@ -21,6 +21,11 @@ void accept_request(int conn_fd ,struct thread_arg *thread_arg_obj)
             if(strcmp(thread_arg_obj->algorithm_type,"FIFS")==0)
             {
             enqueue(conn_fd,thread_arg_obj->scheduler->BUFFER_QUEUE);
+            }
+            else if (strcmp(thread_arg_obj->algorithm_type,"SFF")==0){
+             int fileSize =get_filesize(conn_fd);
+             struct Pair temp  = (struct Pair){fileSize,conn_fd} ;
+            insert_into_heap(thread_arg_obj->scheduler->BUFFER_HEAP,temp);
             }
             else{
             thread_arg_obj->scheduler->BUFFER_STACK[thread_arg_obj->requests_counter] = conn_fd;
