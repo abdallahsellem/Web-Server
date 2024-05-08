@@ -18,7 +18,8 @@
         "ostream": "c",
         "request.h": "c",
         "typeinfo": "c",
-        "pthreadtypes.h": "c"
+        "pthreadtypes.h": "c",
+        "*.txt": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
