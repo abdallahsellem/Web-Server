@@ -19,10 +19,10 @@ Security
 
 Security considerations are mentioned, including avoiding potential backdoors and constraining file requests to a sub-tree of the file system hierarchy.
 
-![alt text](image.png)
+![alt text](./images/image.png)
 
 ### Server Scheduling  
-![alt text](image-1.png)
+![alt text](./images/image-1.png)
 
 #### for FIFO :
 - I used queue to store the requests and pop the first request come each time to be handle 
@@ -33,7 +33,7 @@ Security considerations are mentioned, including avoiding potential backdoors an
 - **Heap** and its operations created from **scratch**
 
 ##### Min Heap example :
-![alt text](image-2.png)
+![alt text](./images/image-2.png)
 
 
 ## How to Run
