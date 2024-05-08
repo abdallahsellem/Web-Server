@@ -81,7 +81,7 @@ void consume_requests(void *threadarg)
 
         pthread_mutex_unlock(&thread_arg_obj->pool->BufferLock);
 
-        sleep(4);
+        sleep(1);
         // Handle the request
         request_handle(request);
     }

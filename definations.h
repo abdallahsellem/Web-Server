@@ -6,7 +6,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-
+#include <bits/pthreadtypes.h>
+#include <unistd.h>
+#include <malloc.h>
+#include <stdlib.h>
+#include <semaphore.h>
 #define NUM_REQUESTS_BUFFER 100
 #define NUM_THREADS 2
 
@@ -48,6 +52,13 @@ struct scheduler_type {
     int requests_counter ;
 
 };
+
+
+
+// Generic Functions :
+
+int request_parse_uri(char *uri, char *filename, char *cgiargs);
+
 
 
 #endif

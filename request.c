@@ -1,3 +1,4 @@
+#include "definations.h"
 #include "io_helper.h"
 #include "request.h"
 #include <pthread.h>
@@ -55,34 +56,6 @@ void request_read_headers(int fd) {
     return;
 }
 
-//
-// Return 1 if static, 0 if dynamic content
-// Calculates filename (and cgiargs, for dynamic) from uri
-//
-int request_parse_uri(char *uri, char *filename, char *cgiargs) {
-    char *ptr;
-    
-    if (!strstr(uri, "cgi")) { 
-	// static
-	strcpy(cgiargs, "");
-	sprintf(filename, ".%s", uri);
-	if (uri[strlen(uri)-1] == '/') {
-	    strcat(filename, "index.html");
-	}
-	return 1;
-    } else { 
-	// dynamic
-	ptr = index(uri, '?');
-	if (ptr) {
-	    strcpy(cgiargs, ptr+1);
-	    *ptr = '\0';
-	} else {
-	    strcpy(cgiargs, "");
-	}
-	sprintf(filename, ".%s", uri);
-	return 0;
-    }
-}
 
 //
 // Fills in the filetype given the filename
@@ -153,12 +126,14 @@ void request_handle(int fd) {
     char filename[MAXBUF], cgiargs[MAXBUF];
     readline_or_die(fd, buf, MAXBUF);
     sscanf(buf, "%s %s %s", method, uri, version);
-    printf("method:%s uri:%s version:%s\n", method, uri, version);
+    printf(" \n method:%s uri:%s version:%s \n", method, uri, version);
     
+    printf("\n SSSSSSSSSSSSSSSSS \n");
     if (strcasecmp(method, "GET")) {
 	request_error(fd, method, "501", "Not Implemented", "server does not implement this method");
 	return;
     }
+
     request_read_headers(fd);
     
     is_static = request_parse_uri(uri, filename, cgiargs);

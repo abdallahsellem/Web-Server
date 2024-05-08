@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include "definations.h"
 
 typedef struct sockaddr sockaddr_t;
 
@@ -83,7 +84,7 @@ typedef struct sockaddr sockaddr_t;
 ssize_t readline(int fd, void *buf, size_t maxlen);
 int open_client_fd(char *hostname, int portno);
 int open_listen_fd(int portno);
-
+int get_filesize(int con_fd);
 // wrappers for above
 #define readline_or_die(fd, buf, maxlen) \
     ({ ssize_t rc = readline(fd, buf, maxlen); assert(rc >= 0); rc; })

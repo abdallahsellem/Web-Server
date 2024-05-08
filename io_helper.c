@@ -1,4 +1,8 @@
+
+#include "definations.h"
 #include "io_helper.h"
+#include "request.h"
+
 
 ssize_t readline(int fd, void *buf, size_t maxlen) {
     char c;
@@ -79,19 +83,4 @@ int open_listen_fd(int port) {
     }
     return listen_fd;
 }
-
-int get_filesize(int fd)
-{
-
-   struct stat fileStat;
-    if (fstat(fd, &fileStat) == -1) {
-        perror("fstat");
-        close(fd);
-        return 1;
-    }
-
-    return fileStat.st_size
-
-}
-
 

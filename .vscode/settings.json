@@ -17,7 +17,8 @@
         "string_view": "c",
         "ostream": "c",
         "request.h": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "pthreadtypes.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
