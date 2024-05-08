@@ -1,4 +1,4 @@
-#include "definations.h"
+#include "../definations.h"
 
 struct Pair {
     int first;

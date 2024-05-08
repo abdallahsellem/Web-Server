@@ -4,8 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "queue.h"
-#include "heap.h"
+#include "./data-structres/queue.h"
+#include "./data-structres/heap.h"
 void accept_request(int conn_fd ,struct thread_arg *thread_arg_obj)
 {
 

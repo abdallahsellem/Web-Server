@@ -5,8 +5,8 @@
 #include "thread_pool.h"
 #include "definations.h"
 #include "request.h"
-#include "queue.h"
-#include "heap.h"
+#include "./data-structres/queue.h"
+#include "./data-structres/heap.h"
 struct scheduler_type *init_scheduler(char *algorithm_type)
 {
     struct scheduler_type *scheduler_obj = (struct scheduler_type *)malloc(sizeof(struct scheduler_type));
