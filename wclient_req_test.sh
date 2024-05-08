@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Number of requests to send
-NUM_REQUESTS=10
+NUM_REQUESTS=100
 
 # Server details
 SERVER_HOST="localhost"
