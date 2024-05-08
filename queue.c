@@ -1,6 +1,5 @@
 
 #include "queue.h"
-#include "definations.h"
 void create_queue( struct queue *pt)
 {
     pt->rear = -1;

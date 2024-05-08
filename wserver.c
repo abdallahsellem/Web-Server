@@ -9,7 +9,6 @@
 #include "thread_pool.h"
 #include "producer.h"
 #include "definations.h"
-#include "heap.h"
 char default_root[] = ".";
 
 
@@ -53,7 +52,6 @@ int main(int argc, char *argv[]) {
         socklen_t client_len = sizeof(client_addr);
         int conn_fd = accept_or_die(listen_fd, (struct sockaddr *) &client_addr, &client_len);
     
-
 		accept_request(conn_fd,thread_arg_obj);
     }
 

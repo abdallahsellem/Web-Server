@@ -9,9 +9,10 @@
 struct scheduler_type *init_scheduler(char *algorithm_type)
 {
     struct scheduler_type *scheduler_obj = (struct scheduler_type *)malloc(sizeof(struct scheduler_type));
-    if (strcmp(algorithm_type, "FIFO") == 0)
+    if (strcmp(algorithm_type, "FIFS") == 0)
     {
         scheduler_obj->BUFFER_QUEUE = (struct queue *)malloc(sizeof(struct queue));
+        create_queue(scheduler_obj->BUFFER_QUEUE);
     }
     else if (strcmp(algorithm_type, "SFF") == 0)
     {
@@ -65,9 +66,10 @@ void consume_requests(void *threadarg)
         }
 
         int request = 0;
-        if (strcmp(thread_arg_obj->algorithm_type, "FIFO")==0)
+        if (strcmp(thread_arg_obj->algorithm_type, "FIFS")==0)
         {
             request=dequeue(thread_arg_obj->scheduler->BUFFER_QUEUE);
+
         }
         else
         {

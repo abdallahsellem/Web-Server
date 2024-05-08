@@ -127,8 +127,6 @@ void request_handle(int fd) {
     readline_or_die(fd, buf, MAXBUF);
     sscanf(buf, "%s %s %s", method, uri, version);
     printf(" \n method:%s uri:%s version:%s \n", method, uri, version);
-    
-    printf("\n SSSSSSSSSSSSSSSSS \n");
     if (strcasecmp(method, "GET")) {
 	request_error(fd, method, "501", "Not Implemented", "server does not implement this method");
 	return;

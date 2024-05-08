@@ -11,19 +11,11 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <semaphore.h>
+
 #define NUM_REQUESTS_BUFFER 100
 #define NUM_THREADS 2
 
 
-// Queue  structure
-
-struct queue
-{
-    int arr[NUM_REQUESTS_BUFFER];
-    int rear;
-    int front;
-    int size;
-};
 
 // Thread Pool structure
 
@@ -39,6 +31,7 @@ struct scheduler_type {
 
     int BUFFER_STACK[NUM_REQUESTS_BUFFER];
     struct queue *BUFFER_QUEUE ;
+    struct heap *BUFFER_HEAP ;
     int curr_size;
 
 };

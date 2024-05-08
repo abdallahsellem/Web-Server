@@ -1,4 +1,15 @@
 #include "definations.h"
+
+// Queue  structure
+
+struct queue
+{
+    int arr[NUM_REQUESTS_BUFFER];
+    int rear;
+    int front;
+    int size;
+};
+
 void create_queue( struct queue *pt);
 
 void enqueue(int value, struct queue* pt);
